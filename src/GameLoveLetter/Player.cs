@@ -22,6 +22,7 @@ namespace GameLoveLetter
 		public Card PlayCard()
 		{
 			int index = 0;
+
 			Card cardPlayed = Cards[index];
 			Cards.RemoveAt(index);
 

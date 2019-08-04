@@ -4,66 +4,129 @@ namespace GameLoveLetter.Tests
 {
 	public class CardsTest
 	{
+		#region Check card's properties
+
 		[Fact]
-		public void CheckNameAndStrengthOfCards()
+		public void CheckNameAndStrengthOfGuardCard()
 		{
-			//A
-			var cardGuard = new Guard();
-			var cardGuardName = "Guard";
-			var cardGuardStrength = 1;
+			// A
+			var card = new Guard();
+			var cardName = "Guard";
+			var cardStrength = 1;
 
-			var cardPriest = new Priest();
-			var cardPriestName = "Priest";
-			var cardPriestStrength = 2;
+			// A
 
-			var cardBaron = new Baron();
-			var cardBaronName = "Baron";
-			var cardBaronStrength = 3;
+			// A
+			Assert.Equal(cardName, card.Name);
+			Assert.Equal(cardStrength, card.Strength);
+		}
 
-			var cardHandmaid = new Handmaid();
-			var cardHandmaidName = "Handmaid";
-			var cardHandmaidStrength = 4;
+		[Fact]
+		public void CheckNameAndStrengthOfPriestCard()
+		{
+			// A
+			var card = new Priest();
+			var cardName = "Priest";
+			var cardStrength = 2;
 
-			var cardPrince = new Prince();
+			// A
+
+			// A
+			Assert.Equal(cardName, card.Name);
+			Assert.Equal(cardStrength, card.Strength);
+		}
+
+		[Fact]
+		public void CheckNameAndStrengthOfBaronCard()
+		{
+			// A
+			var card = new Baron();
+			var cardName = "Baron";
+			var cardStrength = 3;
+
+			// A
+
+			// A
+			Assert.Equal(cardName, card.Name);
+			Assert.Equal(cardStrength, card.Strength);
+		}
+
+		[Fact]
+		public void CheckNameAndStrengthOfHandmaidCard()
+		{
+			// A
+			var card = new Handmaid();
+			var cardName = "Handmaid";
+			var cardStrength = 4;
+
+			// A
+
+			// A
+			Assert.Equal(cardName, card.Name);
+			Assert.Equal(cardStrength, card.Strength);
+		}
+
+		[Fact]
+		public void CheckNameAndStrengthOfPrinceCard()
+		{
+			// A
+			var card = new Prince();
 			var cardPrinceName = "Prince";
 			var cardPrinceStrength = 5;
 
-			var cardKing = new King();
-			var cardKingName = "King";
-			var cardKingStrength = 6;
+			// A
 
-			var cardCountess = new Countess();
-			var cardCountessName = "Countess";
-			var cardCountessStrength = 7;
-
-			var cardPrincess = new Princess();
-			var cardPrincessName = "Princess";
-			var cardPrincessStrength = 8;
-
-			//A
-			Assert.Equal(cardGuardName, cardGuard.Name);
-			Assert.Equal(cardGuardStrength, cardGuard.Strength);
-
-			Assert.Equal(cardPriestName, cardPriest.Name);
-			Assert.Equal(cardPriestStrength, cardPriest.Strength);
-
-			Assert.Equal(cardBaronName, cardBaron.Name);
-			Assert.Equal(cardBaronStrength, cardBaron.Strength);
-
-			Assert.Equal(cardHandmaidName, cardHandmaid.Name);
-			Assert.Equal(cardHandmaidStrength, cardHandmaid.Strength);
-
-			Assert.Equal(cardPrinceName, cardPrince.Name);
-			Assert.Equal(cardPrinceStrength, cardPrince.Strength);
-
-			Assert.Equal(cardKingName, cardKing.Name);
-			Assert.Equal(cardKingStrength, cardKing.Strength);
-
-			Assert.Equal(cardCountessName, cardCountess.Name);
-			Assert.Equal(cardCountessStrength, cardCountess.Strength);
-
-			Assert.Equal(cardPrincessName, cardPrincess.Name);
-			Assert.Equal(cardPrincessStrength, cardPrincess.Strength);
+			// A
+			Assert.Equal(cardPrinceName, card.Name);
+			Assert.Equal(cardPrinceStrength, card.Strength);
 		}
+
+		[Fact]
+		public void CheckNameAndStrengthOfKingCard()
+		{
+			// A
+			var card = new King();
+			var cardName = "King";
+			var cardStrength = 6;
+
+			// A
+
+			// A
+			Assert.Equal(cardName, card.Name);
+			Assert.Equal(cardStrength, card.Strength);
+		}
+
+		[Fact]
+		public void CheckNameAndStrengthOfCountessCard()
+		{
+			// A
+			var card = new Countess();
+			var cardName = "Countess";
+			var cardStrength = 7;
+
+			// A
+
+			// A
+			Assert.Equal(cardName, card.Name);
+			Assert.Equal(cardStrength, card.Strength);
+		}
+
+		[Fact]
+		public void CheckNameAndStrengthOfPrincessCard()
+		{
+			// A
+			var card = new Princess();
+			var cardName = "Princess";
+			var cardStrength = 8;
+
+			// A
+			
+			// A
+			Assert.Equal(cardName, card.Name);
+			Assert.Equal(cardStrength, card.Strength);
+		}
+
+		#endregion // Check card's properties
+
 	}
 }
