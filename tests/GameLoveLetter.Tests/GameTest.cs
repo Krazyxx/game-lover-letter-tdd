@@ -145,7 +145,7 @@ namespace GameLoveLetter.Tests
 			var nbCardsExpected = nbCards - nbDiscardedCards - nbPlayer;
 
 			// A
-			game.Initialisation();
+			game.Initialization();
 
 			// A
 			Assert.Equal(nbCardsExpected, game.Cards.Count);

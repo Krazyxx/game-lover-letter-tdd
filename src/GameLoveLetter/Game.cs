@@ -20,42 +20,54 @@ namespace GameLoveLetter
 			Players = new List<Player>();
 			for (int i = 0; i < nbPlayer; i++)
 			{
-				Players.Add(new Player());
+				Players.Add(new Player(i));
 			}
 
-			Cards = new Queue<Card>();
-			Cards.Enqueue(new Guard());
-			Cards.Enqueue(new Guard());
-			Cards.Enqueue(new Guard());
-			Cards.Enqueue(new Guard());
-			Cards.Enqueue(new Guard());
-			Cards.Enqueue(new Priest());
-			Cards.Enqueue(new Priest());
-			Cards.Enqueue(new Baron());
-			Cards.Enqueue(new Baron());
-			Cards.Enqueue(new Handmaid());
-			Cards.Enqueue(new Handmaid());
-			Cards.Enqueue(new Prince());
-			Cards.Enqueue(new Prince());
-			Cards.Enqueue(new King());
-			Cards.Enqueue(new Countess());
-			Cards.Enqueue(new Princess());
+			IEnumerable<Card> tmpCards = new List<Card>()
+			{
+				new Guard(),
+				new Guard(),
+				new Guard(),
+				new Guard(),
+				new Guard(),
+				new Priest(),
+				new Priest(),
+				new Baron(),
+				new Baron(),
+				new Handmaid(),
+				new Handmaid(),
+				new Prince(),
+				new Prince(),
+				new King(),
+				new Countess(),
+				new Princess()
+			};
 
-			Cards.Shuffle();
+			tmpCards = tmpCards.Shuffle();
+
+			Cards = new Queue<Card>();
+			foreach (var card in tmpCards)
+			{
+				Cards.Enqueue(card);
+			}
 		}
 
 		public void DiscardCard()
 		{
-			Cards.Dequeue();
+			var discardedCard = Cards.Dequeue();
+			Console.WriteLine($"Discard top card ({discardedCard.Name} card).");
 		}
 
-		public void Initialisation()
+		public void Initialization()
 		{
 			DiscardCard();
 
-			foreach(var player in Players)
+			Console.WriteLine("Deal card to each player :");
+			foreach (var player in Players)
 			{
 				player.Cards.Add(Cards.Dequeue());
+
+				Console.WriteLine($" - player {player.number} drew a {player.Cards[0].Name} card.");
 			}
 		}
 	}
