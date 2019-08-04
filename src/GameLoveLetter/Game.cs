@@ -65,10 +65,23 @@ namespace GameLoveLetter
 			Console.WriteLine("Deal card to each player :");
 			foreach (var player in Players)
 			{
-				player.Cards.Add(Cards.Dequeue());
-
-				Console.WriteLine($" - player {player.number} drew a {player.Cards[0].Name} card.");
+				DrawACard(player);
 			}
+		}
+
+		public void DrawACard(Player player)
+		{
+			player.Cards.Add(Cards.Dequeue());
+
+			Console.WriteLine($"Player {player.Number} draw a {player.Cards[0].Name} card.");
+		}
+
+		public void PlayTurn(Player player)
+		{
+			DrawACard(player);
+			Card cardPlayed = player.PlayCard();
+
+			Console.WriteLine($"Player {player.Number} has play {cardPlayed.Name} card.");
 		}
 	}
 

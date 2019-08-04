@@ -154,5 +154,38 @@ namespace GameLoveLetter.Tests
 				Assert.Equal(nbCardsExpectedPerPlayer, player.Cards.Count);
 			}
 		}
+
+		[Theory]
+		[InlineData(2)]
+		[InlineData(3)]
+		[InlineData(4)]
+		public void PlayerHasOnlyOneCardAfterHisTurnExceptIfHeIsEliminated(int nbPlayer)
+		{
+			// A
+			var game = new Game(nbPlayer);
+			game.Initialization();
+
+			int[] nbCardPerPlay = new int[nbPlayer];
+			int nbCardsExpected = 1;
+			int nbRemainingCardsExpected = game.Cards.Count - nbPlayer;
+
+			// A
+			foreach (var player in game.Players)
+			{
+				game.PlayTurn(player);
+				nbCardPerPlay[player.Number] = player.Cards.Count;
+			}
+
+			// A
+			foreach (var player in game.Players)
+			{
+				if (!player.IsEliminated)
+				{
+					Assert.Equal(nbCardsExpected, nbCardPerPlay[player.Number]);
+				}
+			}
+
+			Assert.Equal(nbRemainingCardsExpected, game.Cards.Count);
+		}
 	}
 }
