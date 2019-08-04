@@ -44,5 +44,65 @@ namespace GameLoveLetter.Tests
 			Assert.Equal(cardName, card.Name);
 			Assert.Equal(cardStrength, card.Strength);
 		}
+
+		[Fact]
+		public void WhenPlayerPlaysPrincessCardHeIsEliminated()
+		{
+			// A
+			var game = new Game(3);
+			game.Initialization();
+			game.Players[0].Cards = new List<Card> { new Princess() };
+
+			// A
+			game.PlayTurn(game.Players[0]);
+
+			// A
+			Assert.True(game.Players[0].IsEliminated);
+		}
+
+		[Fact]
+		public void WhenPlayerPlaysPrincessCardHeIsProtected()
+		{
+			// A
+			var game = new Game(3);
+			game.Initialization();
+			game.Players[0].Cards = new List<Card> { new Handmaid() };
+
+			// A
+			game.PlayTurn(game.Players[0]);
+
+			// A
+			Assert.True(game.Players[0].IsProtected);
+		}
+
+		[Fact]
+		public void WhenPlayerPlaysBaronCardHeChooseAnotherPlayerAndCompareHands()
+		{
+			// A
+			var game = new Game(2);
+			game.Initialization();
+			game.Players[0].Cards = new List<Card> { new Handmaid() };
+
+			// A
+			game.PlayTurn(game.Players[0]);
+
+			// A
+			Assert.True(game.Players[0].IsProtected);
+		}
+
+		[Fact]
+		public void WhenPlayerPlaysGuardCardHeDesignatesAnotherPlayerAndNamesATypeOfCard()
+		{
+			// A
+			var game = new Game(3);
+			game.Initialization();
+			game.Players[0].Cards = new List<Card> { new Guard() };
+
+			// A
+			game.PlayTurn(game.Players[0]);
+
+			// A
+			// TODO : Implement this.
+		}
 	}
 }

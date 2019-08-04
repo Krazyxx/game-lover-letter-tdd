@@ -6,17 +6,15 @@ namespace GameLoveLetter
 	public class Player
 	{
 		public List<Card> Cards = new List<Card>();
-		public int Number = 0;
-		public bool IsEliminated = false;
+		public int Number { get; set; }
+		public bool IsProtected { get; set; }
+		public bool IsEliminated { get; set; }
 
 		public Player(int numPlayer)
 		{
 			Number = numPlayer;
-		}
-
-		public void Eliminate()
-		{
-			IsEliminated = true;
+			IsEliminated = false;
+			IsProtected = false;
 		}
 
 		public Card PlayCard()

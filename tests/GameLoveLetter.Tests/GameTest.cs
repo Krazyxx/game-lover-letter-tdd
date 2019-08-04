@@ -12,7 +12,7 @@ namespace GameLoveLetter.Tests
 		[InlineData(3)]
 		[InlineData(4)]
 		[InlineData(5)]
-		public void GameHasTwoToFourPlayers(int nbPlayer)
+		public void AGameHasTwoToFourPlayers(int nbPlayer)
 		{
 			// A
 			UncorrectNumberOfPlayersException exception = null;

@@ -78,8 +78,36 @@ namespace GameLoveLetter
 
 		public void PlayTurn(Player player)
 		{
+			if (player.IsProtected)
+			{
+				player.IsProtected = false;
+			}
+
 			DrawACard(player);
 			Card cardPlayed = player.PlayCard();
+
+			switch(cardPlayed.Name) {
+				case "Guard":
+					break;
+				case "Priest":
+					break;
+				case "Baron":
+					break;
+				case "Handmaid":
+					player.IsProtected = true;
+					break;
+				case "Prince":
+					break;
+				case "King":
+					break;
+				case "Countess":
+					break;
+				case "Princess":
+					player.IsEliminated = true;
+					break;
+				default:
+					break;
+			}
 
 			Console.WriteLine($"Player {player.Number} has play {cardPlayed.Name} card.");
 		}
