@@ -31,7 +31,7 @@ namespace GameLoveLetter.Tests
 			else
 			{
 				Assert.NotNull(exception);
-				Assert.Equal("A game must contain at least 2 players and less than 4 players.", exception.Message);
+				Assert.Equal("A game must contain between 2 and 4 players.", exception.Message);
 			}
 		}
 
@@ -45,7 +45,7 @@ namespace GameLoveLetter.Tests
 			var nbCards = 16;
 
 			// A
-			Assert.Equal(game.Cards.Length, nbCards);
+			Assert.Equal(game.Cards.Count, nbCards);
 		}
 
 		[Fact]
@@ -111,6 +111,48 @@ namespace GameLoveLetter.Tests
 			Assert.Equal(expectedCount, nbCountesses);
 			Assert.Equal(expectedCount, nbPrincesses);
 			Assert.Equal(expectedCount, nbOthersCards);
+		}
+
+		[Theory]
+		[InlineData(2)]
+		[InlineData(3)]
+		[InlineData(4)]
+		public void OneCardIsDiscardedAtTheBeginning(int nbPlayer)
+		{
+			// A
+			var game = new Game(nbPlayer);
+			int nbCards = 16;
+
+			// A
+			game.DiscardCard();
+			nbCards--;
+
+			// A
+			Assert.Equal(nbCards, game.Cards.Count);
+		}
+
+		[Theory]
+		[InlineData(2)]
+		[InlineData(3)]
+		[InlineData(4)]
+		public void DuringInitialisationOneCardIsDiscardedAndOneCardIsDealtToEachPlayer(int nbPlayer)
+		{
+			// A
+			var game = new Game(nbPlayer);
+			var nbCards = 16;
+			var nbDiscardedCards = 1;
+			var nbCardsExpectedPerPlayer = 1;
+			var nbCardsExpected = nbCards - nbDiscardedCards - nbPlayer;
+
+			// A
+			game.Initialisation();
+
+			// A
+			Assert.Equal(nbCardsExpected, game.Cards.Count);
+			foreach (var player in game.Players)
+			{
+				Assert.Equal(nbCardsExpectedPerPlayer, player.Cards.Count);
+			}
 		}
 	}
 }
